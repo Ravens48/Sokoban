@@ -7,6 +7,7 @@ NAME	= my_sokoban
 CFLAGS	+=	-W -Wall -Wextra -l ncurses
 
 SRC	=	open.c \
+		soko_deplacement.c\
 		Soko_centrage.c
 
 OBJ	=	$(SRC:.c=.o)

@@ -9,11 +9,22 @@ typedef struct param_s
 {
     int nb_line;
     int nb_col;
+    int p_x;
+    int p_y;
+    char **t_map;
+    int key;
 
 }param_t;
+
 
 char *open_file(char *str);
 int len_ligne(char *str);
 int nb_ligne(char *str);
 char **tableau(char *str);
-void init_map(int ac, char **av);
+void init_map(char **av, param_t *pos);
+void go_right(param_t *pos);
+void go_left(param_t *pos);
+void go_down(param_t *pos);
+void go_up(param_t *pos);
+void find_p(param_t *pos);
+void deplacement(param_t *pos);

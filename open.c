@@ -26,12 +26,20 @@ char *open_file(char *str)
     return (buffer);
 }
 
+
+
 int len_ligne(char *str)
 {
     int i = 0;
     int c = 0;
-    for (; str[i] != '\n'; i++) {
-        c++;
+    int tmp = 0;
+
+    for (; str[i] != '\0'; i++) {
+        for(; str[i] != '\n' && str[i] != '\0'; tmp++, i++) {
+        }
+        if (tmp > c)
+            c = tmp;
+        tmp = 0;
     }
     return (c);
 }
@@ -48,42 +56,47 @@ int nb_ligne(char *str)
     return (c + 1);
 }
 
+
 char **tableau(char *str)
 {
     int nb_line = nb_ligne(str);
     int nb_colonne = len_ligne(str);
     int j = 0;
-    //int k = 0;
     char **map = malloc(sizeof(char *) * (nb_line + 1));
 
     for (int i = 0; i < nb_line; i++) {
         map[i] = malloc(sizeof(char) * (nb_colonne + 1));
-        for (int y = 0; y < nb_colonne &&str[j] != '\n' && str[j]; j++, y++) {
+        for (int y = 0; y < nb_colonne 
+        &&str[j] != '\n' && str[j]; j++, y++) {
             map[i][y] = str[j];
         }
         j++;
-        //printf("TAB[%d][%d]\n", i, nb_colonne);
-        //map->m_tableau[i][nb_colonne] = '\n';
-        //map[i][nb_colonne - 2] = '\0';
+
     }
-   // map[nb_line] == NULL;
-    //printf("%d/n, %d\n", nb_line, nb_colonne);
-    //for(;map[k]; k++) {
-    //   printf("%s",map[k]);
-   // }
     return (map);
+}
+
+void find_p(param_t *pos)
+{
+
+    for (int y = 0; y < pos->nb_line; y++) {
+        for (int x = 0; pos->t_map[y][x] != '\n' 
+        && pos->t_map[y][x] != '\0'; x++) {
+            if (pos->t_map[y][x] ==  'P') {
+                pos->p_y = y;
+                pos->p_x = x;
+            }
+        }
+    } 
 }
 
 int main(int ac, char **av)
 {
-    
-    //map_t *map = NULL;
+    param_t *pos = malloc(sizeof(param_t));
 
     if (ac != 2) {
         return (84);
     }
-    init_map(ac, av);
+    init_map(av, pos);
     return (0);
-
-    // doner une variable pour le tableau
 }
