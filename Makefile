@@ -8,14 +8,17 @@ CFLAGS	+=	-W -Wall -Wextra -l ncurses
 
 SRC	=	open.c \
 		soko_deplacement.c\
+		soko_helper.c \
+		my_putstr.c \
+		my_putchar.c \
 		Soko_centrage.c
 
 OBJ	=	$(SRC:.c=.o)
 
 all: compil
 
-compil:	$(SRC)
-	$(CC) -o $(NAME) $(SRC) $(CFLAGS)
+compil:	$(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean:
 	$(RM) $(OBJ)

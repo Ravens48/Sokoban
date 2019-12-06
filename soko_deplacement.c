@@ -9,33 +9,65 @@
 void go_right(param_t *pos)
 {
         if (pos->t_map[pos->p_y][pos->p_x +1] != '#') {
-        pos->t_map[pos->p_y][pos->p_x] = ' ';
-        pos->t_map[pos->p_y][pos->p_x+1] = 'P';
+            if(pos->t_map[pos->p_y][pos->p_x +1] == 'X' && 
+            pos->t_map[pos->p_y][pos->p_x +2] != '#') {
+            pos->t_map[pos->p_y][pos->p_x] = ' ';
+            pos->t_map[pos->p_y][pos->p_x+1] = 'P';
+            pos->t_map[pos->p_y][pos->p_x+2] = 'X';
+            }
+            else if(pos->t_map[pos->p_y][pos->p_x +1] !=  'X') {
+                pos->t_map[pos->p_y][pos->p_x+1] = 'P';
+                pos->t_map[pos->p_y][pos->p_x] = ' ';
+            }
     }
 }
 
 void go_left(param_t *pos)
 {
         if (pos->t_map[pos->p_y][pos->p_x - 1] != '#') {
-        pos->t_map[pos->p_y][pos->p_x] = ' ';
-        pos->t_map[pos->p_y][pos->p_x - 1] = 'P';
+            if(pos->t_map[pos->p_y][pos->p_x - 1] == 'X' && 
+            pos->t_map[pos->p_y][pos->p_x - 2] != '#') {
+            pos->t_map[pos->p_y][pos->p_x] = ' ';
+            pos->t_map[pos->p_y][pos->p_x - 1] = 'P';
+            pos->t_map[pos->p_y][pos->p_x - 2] = 'X';
+            }
+            else if(pos->t_map[pos->p_y][pos->p_x - 1] !=  'X') {
+                pos->t_map[pos->p_y][pos->p_x - 1] = 'P';
+                pos->t_map[pos->p_y][pos->p_x] = ' ';
+            }
         }
 }
 
 void go_down(param_t *pos)
 {
         if (pos->t_map[pos->p_y + 1][pos->p_x] != '#') {
+            if (pos->t_map[pos->p_y + 1][pos->p_x] == 'X' && 
+            pos->t_map[pos->p_y + 2][pos->p_x] != '#') {
+            pos->t_map[pos->p_y][pos->p_x] = ' ';
+            pos->t_map[pos->p_y + 1][pos->p_x] = 'P';
+            pos->t_map[pos->p_y + 2][pos->p_x] = 'X';
+            }
+        else if(pos->t_map[pos->p_y + 1][pos->p_x] != 'X') {
         pos->t_map[pos->p_y][pos->p_x] = ' ';
         pos->t_map[pos->p_y + 1][pos->p_x] = 'P';
         }
+    }
 }
 
 void go_up(param_t *pos)
 {
         if (pos->t_map[pos->p_y - 1][pos->p_x] != '#') {
+            if (pos->t_map[pos->p_y - 1][pos->p_x] == 'X' &&
+            pos->t_map[pos->p_y - 2][pos->p_x] != '#') {
+            pos->t_map[pos->p_y][pos->p_x] = ' ';
+            pos->t_map[pos->p_y - 1][pos->p_x] = 'P';
+            pos->t_map[pos->p_y - 2][pos->p_x] = 'X';
+            }
+        else if(pos->t_map[pos->p_y - 1][pos->p_x] != 'X') {
         pos->t_map[pos->p_y][pos->p_x] = ' ';
         pos->t_map[pos->p_y - 1][pos->p_x] = 'P';
-            }
+        }
+    }
 }
 
 void deplacement(param_t *pos)
