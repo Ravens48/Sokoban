@@ -6,9 +6,11 @@
 */
 #include "sokoban.h"
 
-void init_map(char **av, param_t *pos)
+int init_map(char **av, param_t *pos)
 {
     char *op_map = open_file(av[1]);
+    if (!op_map)
+        return(84);
     pos->t_map = tableau(op_map);
     pos->nb_line = nb_ligne(op_map);
     pos->nb_col = len_ligne(op_map);
@@ -26,9 +28,16 @@ void init_map(char **av, param_t *pos)
             ((COLS / 2) - (pos->nb_line / 2)), "%s", pos->t_map[x]);
         refresh();
         pos->key = getch();
-        if (pos->key == ' ')
-            break;
         deplacement(pos);
+        if (pos->key == ' ')
+            reset_map(av, pos);
     }
     endwin();
+    return(0);
+}
+
+void reset_map(char **av, param_t *pos)
+{
+    char *map = open_file(av[1]);
+    pos->t_map = tableau(map);
 }

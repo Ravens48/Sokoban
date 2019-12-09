@@ -9,6 +9,8 @@ CFLAGS	+=	-W -Wall -Wextra -l ncurses
 SRC	=	open.c \
 		soko_deplacement.c\
 		soko_helper.c \
+		soko_error.c \
+		soko_map_param.c \
 		my_putstr.c \
 		my_putchar.c \
 		Soko_centrage.c
