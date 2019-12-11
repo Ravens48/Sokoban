@@ -36,3 +36,6 @@ void find_p(param_t *pos);
 void deplacement(param_t *pos);
 int error_gest(char *str);
 void reset_map(char **av, param_t *pos);
+void my_putchar(char c);
+void helper(void);
+int my_putstr(char const *str);

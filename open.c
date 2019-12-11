@@ -18,44 +18,15 @@ char *open_file(char *str)
 
     fd = open(str, O_RDONLY);
     if (fd == -1) {
-        exit (84);
+        exit(84);
     }
     read(fd, buffer, size);
+    if (error_gest(buffer) == 84)
+        return(NULL);
     close(fd);
     buffer[size] = 0;
     return (buffer);
 }
-
-
-
-int len_ligne(char *str)
-{
-    int i = 0;
-    int c = 0;
-    int tmp = 0;
-
-    for (; str[i] != '\0'; i++) {
-        for(; str[i] != '\n' && str[i] != '\0'; tmp++, i++) {
-        }
-        if (tmp > c)
-            c = tmp;
-        tmp = 0;
-    }
-    return (c);
-}
-
-int nb_ligne(char *str)
-{
-    int i = 0;
-    int c = 0;
-
-    for (; str[i] != '\0'; i++) {
-        if (str[i] == '\n')
-            c++;
-    }
-    return (c + 1);
-}
-
 
 char **tableau(char *str)
 {
@@ -92,15 +63,16 @@ void find_p(param_t *pos)
 
 int main(int ac, char **av)
 {
+    int res = 0;
     param_t *pos = malloc(sizeof(param_t));
 
     if (ac != 2) {
         return (84);
     }
-    if (av[1][0] == '-' && av[1][1] == 'h') {
+    if (av[1][0] == '-' && av[1][1] == 'h'){
             helper();
             return (0);
     }
-    init_map(av, pos);
-    return (0);
+    res = init_map(av, pos);
+    return (res);
 }
