@@ -23,6 +23,7 @@ typedef struct param_s
 
 }param_t;
 
+int my_putstr(char const *str);
 char *open_file(char *str);
 int len_ligne(char *str);
 int nb_ligne(char *str);
@@ -38,4 +39,3 @@ int error_gest(char *str);
 void reset_map(char **av, param_t *pos);
 void my_putchar(char c);
 void helper(void);
-int my_putstr(char const *str);

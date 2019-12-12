@@ -5,6 +5,8 @@
 ** helper sokoban
 */
 
+#include "sokoban.h"
+
 void helper(void)
 {
     my_putstr("USAGE\n\t./my_sokoban map\nDESCRIPTION\n\tmap file "

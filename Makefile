@@ -13,7 +13,7 @@ SRC	=	open.c \
 		soko_map_param.c \
 		my_putstr.c \
 		my_putchar.c \
-		Soko_centrage.c
+		soko_centrage.c
 
 OBJ	=	$(SRC:.c=.o)
 
