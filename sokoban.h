@@ -20,6 +20,7 @@ typedef struct param_s
     int p_y;
     char **t_map;
     int key;
+    char **save_map;
 
 }param_t;
 

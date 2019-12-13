@@ -14,6 +14,7 @@ int init_map(char **av, param_t *pos)
     pos->t_map = tableau(op_map);
     pos->nb_line = nb_ligne(op_map);
     pos->nb_col = len_ligne(op_map);
+    pos->save_map = tableau(op_map);
     int x = 0;
 
     initscr();
