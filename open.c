@@ -22,7 +22,7 @@ char *open_file(char *str)
     }
     read(fd, buffer, size);
     if (error_gest(buffer) == 84)
-        return(NULL);
+        return (NULL);
     close(fd);
     buffer[size] = 0;
     return (buffer);
@@ -37,8 +37,8 @@ char **tableau(char *str)
 
     for (int i = 0; i < nb_line; i++) {
         map[i] = malloc(sizeof(char) * (nb_colonne + 1));
-        for (int y = 0; y < nb_colonne 
-        &&str[j] != '\n' && str[j]; j++, y++) {
+        for (int y = 0; y < nb_colonne
+        && str[j] != '\n' && str[j]; j++, y++) {
             map[i][y] = str[j];
         }
         j++;
@@ -51,14 +51,14 @@ void find_p(param_t *pos)
 {
 
     for (int y = 0; y < pos->nb_line; y++) {
-        for (int x = 0; pos->t_map[y][x] != '\n' 
+        for (int x = 0; pos->t_map[y][x] != '\n'
         && pos->t_map[y][x] != '\0'; x++) {
             if (pos->t_map[y][x] ==  'P') {
                 pos->p_y = y;
                 pos->p_x = x;
             }
         }
-    } 
+    }
 }
 
 int main(int ac, char **av)

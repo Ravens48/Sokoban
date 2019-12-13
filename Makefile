@@ -1,3 +1,9 @@
+##
+## EPITECH PROJECT, 2019
+## t
+## File description:
+## t
+##
 CC	=	gcc
 
 RM	=	rm -rf
